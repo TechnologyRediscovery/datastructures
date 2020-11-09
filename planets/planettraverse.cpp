@@ -6,7 +6,7 @@
  *  Created on: Nov 9, 2020
  *      Author: edith
  */
-#include<cout>
+
 #include<vector>
 #include<iostream>
 
@@ -47,14 +47,15 @@ public:
 class SearchTools{
 
 
+
 };
 
 enum PlanetAction {travel, orbit, retrieve_data};
 
 class SearchTreeNode{
 public:
-	GalaxyState state;
-	GalaxyState parent_state;
+	GalaxyState* state;
+	GalaxyState* parent_state;
 	PlanetAction actionToNode;
 	float costToNode;
 };

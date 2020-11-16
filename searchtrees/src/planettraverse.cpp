@@ -32,6 +32,14 @@ class Ship{
 public:
 	vector<DataBundle> data_sets_retrieved;
 	vector<Planet> orbited_planets;
+	// Design question: How does we encode the location of the ship?
+
+	// OPTION 1: Ship has member variable of type *Planet
+	// to represent which one it's nearest to, meaning the planet
+	// it could orbit next (if not orbited)
+
+	// OPTION 2: The GalaxyState object could hold a ship_location
+	// member of type *Planet <--choose this
 
 
 
@@ -39,8 +47,10 @@ public:
 
 class GalaxyState{
 public:
-	Ship ship;
-	vector<Planet> planets;
+	Ship* ship;
+	vector<Planet>* planets;
+	Planet* shipLocation;
+
 
 };
 
@@ -88,6 +98,8 @@ public:
 	// from a given current state of the universe
 	//
 	vector<GalaxyState> expand_node(const GalaxyState &current_state){
+
+
 		// TODO: Interrogate the current state and develop
 		// a set of GlalaxyState objects with correctly embedded
 		// actions that the algorithm can take to reach that state
@@ -98,12 +110,32 @@ public:
 		return nullptr;
 	}
 
+	// Function to make selection between possible nodes (i.e. the
+	// frontier and return the chosen state
+	GalaxyState* choose_child_node(vector<SearchTreeNode> frontier){
+		// TODO: Write Guts for choosing next action
+		// Visit each node on the frontier and
+		// choose the path with the lowest cost
+
+
+
+		return nullptr;
+	}
+
+
+
+
+
 
 private:
-	SearchTreeNode* tree_root;
 
+	SearchTreeNode* tree_root;
 	// How do we store rules, like ship must orbit before
 	// retrieving data?
+
+	// global storage of solution path
+	vector<SearchTreeNode> solution_path;
+
 
 
 };
